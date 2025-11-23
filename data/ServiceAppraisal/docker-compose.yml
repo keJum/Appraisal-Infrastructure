@@ -7,7 +7,7 @@ services:
       - "8080:80"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-      - ../../www/site/apps/ServiceAssessment:/var/www/html:ro
+      - ../../www/site/apps/ServiceAppraisal:/var/www/html:ro
     depends_on:
       - php
     networks:
@@ -22,12 +22,14 @@ services:
     container_name: php-fpm
     restart: unless-stopped
     volumes:
-      - ../../www/site/apps/ServiceAssessment:/var/www/html
+      - ../../www/site/apps/ServiceAppraisal:/var/www/html
     command: [ "php-fpm" ]
     environment:
       XDEBUG_MODE: "debug"
       PHP_IDE_CONFIG: "serverName=Docker"
       TZ: Europe/Moscow
+    depends_on:
+      - db
     networks:
       - app_net
 
@@ -36,14 +38,14 @@ services:
     container_name: mysql
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}   # root‑пароль
-      MYSQL_DATABASE:   ${MYSQL_DATABASE}           # база по умолчанию
-      MYSQL_USER:       ${MYSQL_USER}               # пользователь
-      MYSQL_PASSWORD:   ${MYSQL_PASSWORD}           # пароль пользователя
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE:   ${MYSQL_DATABASE}
+      MYSQL_USER:       ${MYSQL_USER}
+      MYSQL_PASSWORD:   ${MYSQL_PASSWORD}
     ports:
-      - "3306:3306"                     # опционально: чтобы подключаться из хоста
+      - "3306:3306"
     volumes:
-      - db_data:/var/lib/mysql           # персистентное хранилище
+      - db_data:/var/lib/mysql
     networks:
       - app_net
 
