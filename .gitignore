@@ -26,3 +26,4 @@ docker-sync.yml
 coverage/
 .phpunit/
 phpunit.xml.dist
+/.idea/*

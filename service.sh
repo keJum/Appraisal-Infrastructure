@@ -1,4 +1,5 @@
 #!/bin/sh
+echo ''
 
 SCRIPT_ROOT_DIR=$(dirname "$0")
 cd "$SCRIPT_ROOT_DIR" || exit
