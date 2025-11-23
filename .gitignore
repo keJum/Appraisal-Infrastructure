@@ -1,0 +1,29 @@
+/vendor/            # Composer‑зависимости
+/node_modules/      # NPM/ Yarn
+/.idea/             # PHPStorm‑IDE
+/.phpstorm/         # старый формат IDE‑папки
+/.vscode/           # VS Code (если вы его тоже используете)
+*.log               # лог‑файлы (php‑logs, nginx‑logs и т.д.)
+*.sql               # дампы БД (в продакшене обычно находятся в /backups)
+*.tmp
+*.swp
+*.swo
+*.DS_Store
+Thumbs.db
+/tmp/
+*.cache
+*.cache/*
+*.phar
+/docker/
+    logs/
+    tmp/
+    var/
+.env
+docker-sync.dockerfile
+docker-sync.yml
+*.php_cs.cache      # PHPCS кеш
+/.phpunit.result.cache
+coverage/
+.phpunit/
+phpunit.xml.dist
+!*/.gitignore
