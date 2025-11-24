@@ -49,8 +49,25 @@ services:
     networks:
       - app_net
 
+  db_test:
+    image: mysql:8.0.33
+    container_name: mysql_test
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${TEST_MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${TEST_MYSQL_DATABASE}
+      MYSQL_USER: ${TEST_MYSQL_USER}
+      MYSQL_PASSWORD: ${TEST_MYSQL_PASSWORD}
+    ports:
+      - "33061:3306"
+    volumes:
+      - db_data_test:/var/lib/mysql
+    networks:
+      - app_net
+
 volumes:
   db_data:
+  db_data_test:
 
 networks:
   app_net:

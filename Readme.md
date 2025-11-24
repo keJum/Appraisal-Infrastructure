@@ -7,8 +7,6 @@
 - MySQL 8
 - Symfony 7.3
 
-# Todo
-- [ ] написать как развертывать проект
-
-# Что можно улучшить
-- [ ] сделать развертывание на prod
+# Разворачивание
+1. В папке data/Appraisal `$mv .env.example .env`
+2. В папке www/site/apps `$git clone {site} Appraisal-Service`
